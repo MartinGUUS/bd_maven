@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [15/Apr/2024:10:32:41 -0600] "GET /bd_maven HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [15/Apr/2024:10:32:41 -0600] "GET /bd_maven/src/main/webapp/index.html?_ijt=k1pmvmq0ngobecv64hb7sd1t7q&_ij_reload=RELOAD_ON_SAVE HTTP/1.1" 404 1021 http-bio-8080-exec-2 57
+0:0:0:0:0:0:0:1 - - [15/Apr/2024:10:32:42 -0600] "GET /bd_maven/ HTTP/1.1" 200 227 http-bio-8080-exec-4 10
+0:0:0:0:0:0:0:1 - - [15/Apr/2024:10:32:43 -0600] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-5 0
+0:0:0:0:0:0:0:1 - - [15/Apr/2024:10:32:43 -0600] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-6 0

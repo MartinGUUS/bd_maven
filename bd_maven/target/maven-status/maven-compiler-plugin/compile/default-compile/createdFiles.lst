@@ -1,0 +1,14 @@
+com\mgar\bd_maven\resources\JakartaEE10Resource.class
+Datos\Main.class
+Modelo\Personaje_Eventos.class
+Datos\EventosDAO.class
+Datos\Personaje_EventosDAO.class
+Modelo\Lugares.class
+Datos\PersonajesDAO.class
+Modelo\Razas.class
+com\mgar\bd_maven\JakartaRestConfiguration.class
+Datos\Conexion.class
+Modelo\Eventos.class
+Datos\RazasDAO.class
+Datos\LugaresDAO.class
+Modelo\Personajes.class
