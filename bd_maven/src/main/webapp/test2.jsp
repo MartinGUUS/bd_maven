@@ -12,6 +12,8 @@
         <h1>Suma</h1>
         <% int num1=7; int num2=2; int sum=num1 + num2;  %>
 
+        <%out.println("hola");%>
+
             <p>La suma de <b>
                     <%= num1 %>
                 </b> + <b>
