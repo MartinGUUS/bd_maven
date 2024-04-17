@@ -16,6 +16,7 @@ public class Personaje_EventosDAO {
     private static final String selectPrincipal = "SELECT * FROM personajes_eventos";
     private static final String insertPrincipal = "INSERT INTO personajes_eventos(fk_personaje,fk_evento) VALUES(?,?);";
     private static final String updatePrincipal = "UPDATE personajes_eventos SET fk_personaje=? WHERE fk_personaje=? AND fk_evento=?";
+    private static final String deletePrincipal = "DELETE FROM personajes_eventos WHERE fk_personaje=? AND fk_evento=?";
 
 
     public static List<Personaje_Eventos> listarPersonajes_Eventos() {
@@ -46,14 +47,14 @@ public class Personaje_EventosDAO {
     }
 
 
-    public void insert(Personaje_Eventos ra) {
+    public void insert(Personaje_Eventos peev) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexion.getConnection();
             ps = conn.prepareStatement(insertPrincipal);
-            ps.setInt(1, ra.getFk_personaje());
-            ps.setInt(2, ra.getFk_evento());
+            ps.setInt(1, peev.getFk_personaje());
+            ps.setInt(2, peev.getFk_evento());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exito al insertar Personajes_Eventos");
         } catch (SQLException ex) {
@@ -64,17 +65,35 @@ public class Personaje_EventosDAO {
         }
     }
 
-    public void update(Personaje_Eventos ra) {
+    public void update(Personaje_Eventos peev) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexion.getConnection();
             ps = conn.prepareStatement(updatePrincipal);
-            ps.setInt(1, ra.getFk_personaje());
-            ps.setInt(2, ra.getFk_personaje());
-            ps.setInt(3, ra.getFk_evento());
+            ps.setInt(1, peev.getFk_personaje());
+            ps.setInt(2, peev.getFk_personaje());
+            ps.setInt(3, peev.getFk_evento());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exito al actualizar Personajes_Eventos");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+    public void delete(Personaje_Eventos peev) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(deletePrincipal);
+            ps.setInt(1, peev.getFk_personaje());
+            ps.setInt(2, peev.getFk_evento());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Exito al eliminar Personajes_Eventos");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {

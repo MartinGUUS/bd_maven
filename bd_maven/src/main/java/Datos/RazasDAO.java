@@ -14,6 +14,7 @@ public class RazasDAO {
     private static final String selectPrincipal = "SELECT * FROM razas";
     private static final String insertPrincipal = "INSERT INTO razas(nombre,descripcion) VALUES(?,?)";
     private static final String updatePrincipal = "UPDATE razas SET nombre =? descripcion=? WHERE idraza=?";
+    private static final String deletePrincipal = "DELETE FROM razas WHERE idraza=?";
 
 
     public static List<Razas> listarRazas() {
@@ -73,6 +74,24 @@ public class RazasDAO {
             ps.setInt(3, ra.getIdRaza());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exito al actualizar Razas");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+
+    public void delete(Razas ra) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(deletePrincipal);
+            ps.setInt(1, ra.getIdRaza());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Exito al eliminar Razas");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {

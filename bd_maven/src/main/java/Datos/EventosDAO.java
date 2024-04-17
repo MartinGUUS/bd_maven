@@ -12,6 +12,7 @@ public class EventosDAO {
     private static final String selectPrincipal = "SELECT * FROM eventos";
     private static final String insertPrincipal = "INSERT INTO eventos(descripcion,fk_lugar,nombre,fecha) VALUES(?,?,?,?)";
     private static final String updatePrincipal = "UPDATE eventos SET nombre=?,descripcion=?,fecha=?,fk_lugar=? WHERE idevento=?";
+    private static final String deletePrincipal = "DELETE FROM eventos WHERE idevento=?";
 
 
     public static List<Eventos> listarEventos() {
@@ -78,6 +79,24 @@ public class EventosDAO {
             ps.setDate(3, ev.getFecha());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exito al actualizar Evento");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+
+    public void delete(Eventos ev) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(deletePrincipal);
+            ps.setInt(1, ev.getIdEvento());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Exito al eliminar Evento");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {

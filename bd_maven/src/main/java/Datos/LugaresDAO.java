@@ -14,6 +14,7 @@ public class LugaresDAO {
     private static final String selectPrincipal = "SELECT * FROM lugares";
     private static final String insertPrincipal = "INSERT INTO lugares(descripcion,nombre,region) VALUES(?,?,?)";
     private static final String updatePrincipal = "UPDATE lugares SET nombre=?,descripcion=?,region=? WHERE idlugar=?";
+    private static final String deletePrincipal = "DELETE FROM lugares WHERE idLugar=?";
 
     public static List<Lugares> listarLugares() {
         Connection conn = null;
@@ -74,6 +75,23 @@ public class LugaresDAO {
             ps.setInt(4, lu.getIdLugar());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exito al actualizar Lugares");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+    public void delete(Lugares lu) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(deletePrincipal);
+            ps.setInt(1, lu.getIdLugar());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Exito al eliminar Lugares");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
