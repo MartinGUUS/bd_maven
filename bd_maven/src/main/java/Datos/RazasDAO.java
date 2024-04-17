@@ -13,6 +13,8 @@ public class RazasDAO {
 
     private static final String selectPrincipal = "SELECT * FROM razas";
     private static final String insertPrincipal = "INSERT INTO razas(nombre,descripcion) VALUES(?,?)";
+    private static final String updatePrincipal = "UPDATE razas SET nombre =? descripcion=? WHERE idraza=?";
+
 
     public static List<Razas> listarRazas() {
         Connection conn = null;
@@ -52,6 +54,25 @@ public class RazasDAO {
             ps.setString(2, ra.getDescripcion());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exito al insertar Razas");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+    public void update(Razas ra) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(updatePrincipal);
+            ps.setString(1, ra.getNombre());
+            ps.setString(2, ra.getDescripcion());
+            ps.setInt(3, ra.getIdRaza());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Exito al actualizar Razas");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {

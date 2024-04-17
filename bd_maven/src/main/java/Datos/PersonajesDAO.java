@@ -16,6 +16,7 @@ public class PersonajesDAO {
 
     private static final String selectPrincipal = "SELECT * FROM personajes";
     private static final String insertPrincipal = "INSERT INTO personajes(fk_raza,descripcion,nombre,fk_lugar) VALUES(?,?,?,?)";
+    private static final String updatePrincipal = "UPDATE personajes SET nombre=?,fk_raza=?,fk_lugar=?,descripcion=? WHERE idpersonaje=?";
 
     public static List<Personajes> listarPersonajes() {
         Connection conn = null;
@@ -59,6 +60,27 @@ public class PersonajesDAO {
             ps.setInt(4, pe.getFk_lugar());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Exito al insertar Personas");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+    public void update(Personajes pe) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(updatePrincipal);
+            ps.setInt(2, pe.getFk_raza());
+            ps.setString(4, pe.getDescripcion());
+            ps.setString(1, pe.getNombre());
+            ps.setInt(3, pe.getFk_lugar());
+            ps.setInt(5, pe.getIdPersonaje());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Exito al actualizar Personas");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
