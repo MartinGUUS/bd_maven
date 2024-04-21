@@ -1,14 +1,13 @@
 package Datos;
 
-import Modelo.*;
 
-import javax.swing.*;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws Exception, SQLException {
+        Scanner scanner = new Scanner(System.in);
         MetodosDAO meto = new MetodosDAO();
 
 
