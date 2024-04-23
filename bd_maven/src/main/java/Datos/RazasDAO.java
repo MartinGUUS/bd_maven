@@ -3,10 +3,7 @@ package Datos;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import Modelo.Razas;
-
 import javax.swing.*;
 
 public class RazasDAO {
