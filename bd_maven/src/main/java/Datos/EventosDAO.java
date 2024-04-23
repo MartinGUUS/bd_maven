@@ -11,6 +11,7 @@ public class EventosDAO {
     private static final String insertPrincipal = "INSERT INTO eventos(descripcion,fk_lugar,nombre,fecha) VALUES(?,?,?,?)";
     private static final String updatePrincipal = "UPDATE eventos SET nombre=?,descripcion=?,fecha=?,fk_lugar=? WHERE idevento=?";
     private static final String deletePrincipal = "DELETE FROM eventos WHERE idevento=?";
+    
 
 
     public static List<Eventos> listarEventos() {
@@ -102,4 +103,6 @@ public class EventosDAO {
             Conexion.close(conn);
         }
     }
+
+
 }

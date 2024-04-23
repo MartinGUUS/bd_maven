@@ -96,11 +96,11 @@ public class MetodosDAO {
         personajesDAO.insert(personajes);
     }
 
-    public void insertEvento() {
+    /*public void insertEvento() {
         String nombre = JOptionPane.showInputDialog("Escribe el nombre del evento");
         String description = JOptionPane.showInputDialog("Escribe una descripcion del evento");
 
     }
-
+*/
 
 }

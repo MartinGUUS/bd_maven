@@ -1,7 +1,6 @@
 package Datos;
 
 import Modelo.Personajes;
-import Modelo.Razas;
 
 import javax.swing.*;
 import java.sql.Connection;

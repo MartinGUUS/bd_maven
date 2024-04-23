@@ -2,7 +2,6 @@ package Datos;
 
 import java.sql.*;
 import javax.sql.DataSource;
-import javax.swing.*;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
