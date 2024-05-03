@@ -1,25 +1,33 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Conceptos</title>
 
     <style>
         body {
-            font-family: "JetBrains Mono", sans-serif; /* Usa TNR. o s-s si no está disponible */
+            font-family: "JetBrains Mono", "JetBrains Mono";
         }
 
         h2 {
-            color: blue;
+            color: red;
+        }
+
+        h1 {
+            color: red;
+            horiz-align: center;
         }
 
         li {
             font-size: 16px;
             line-height: 1.5;
+            list-style-type: square;
         }
     </style>
 </head>
 
 <body>
+<h1><strong>Diseno de aplicaciones WEB</strong></h1>
 <h2>Elementos nuevos en HTML5:</h2>
 <ul>
     <li><strong>article:</strong> Define contenido independiente o autónomo dentro de un documento HTML.</li>

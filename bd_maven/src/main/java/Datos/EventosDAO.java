@@ -1,6 +1,7 @@
 package Datos;
 
 import Modelo.Eventos;
+
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +12,10 @@ public class EventosDAO {
     private static final String insertPrincipal = "INSERT INTO eventos(descripcion,fk_lugar,nombre,fecha) VALUES(?,?,?,?)";
     private static final String updatePrincipal = "UPDATE eventos SET nombre=?,descripcion=?,fecha=?,fk_lugar=? WHERE idevento=?";
     private static final String deletePrincipal = "DELETE FROM eventos WHERE idevento=?";
-    
+    private static final String updateNombre = "UPDATE eventos SET nombre=? WHERE idevento=?";
+    private static final String updateDescripcion = "UPDATE eventos SET descripcion=? WHERE idevento=?";
+    private static final String updateFecha = "UPDATE eventos SET fecha=? WHERE idevento=?";
+    private static final String updateLugar = "UPDATE eventos SET fk_lugar=? WHERE idevento=?";
 
 
     public static List<Eventos> listarEventos() {
@@ -56,7 +60,7 @@ public class EventosDAO {
             ps.setString(3, ev.getNombre());
             ps.setDate(4, ev.getFecha());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Exito al insertar Evento");
+            System.out.println("Agregado exitosamente");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
@@ -65,19 +69,16 @@ public class EventosDAO {
         }
     }
 
-    public void update(Eventos ev) {
+    public void updatenombre(Eventos ev) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexion.getConnection();
-            ps = conn.prepareStatement(updatePrincipal);
-            ps.setString(2, ev.getDescripcion());
-            ps.setInt(4, ev.getFk_lugar());
-            ps.setInt(5, ev.getIdEvento());
+            ps = conn.prepareStatement(updateNombre);
+            ps.setInt(2, ev.getIdEvento());
             ps.setString(1, ev.getNombre());
-            ps.setDate(3, ev.getFecha());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Exito al actualizar Evento");
+            System.out.println("Exito al actualizar el nombre");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
@@ -86,6 +87,60 @@ public class EventosDAO {
         }
     }
 
+
+    public void updatedescripcion(Eventos ev) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(updateDescripcion);
+            ps.setInt(2, ev.getIdEvento());
+            ps.setString(1, ev.getDescripcion());
+            ps.execute();
+            System.out.println("Exito al actualizar la descripcion");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+    public void updatefecha(Eventos ev) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(updateFecha);
+            ps.setDate(1, ev.getFecha());
+            ps.setInt(2, ev.getIdEvento());
+            ps.execute();
+            System.out.println("Exito al actualizar la fecha");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
+
+    public void updatelugar(Eventos ev) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Conexion.getConnection();
+            ps = conn.prepareStatement(updateLugar);
+            ps.setInt(2, ev.getIdEvento());
+            ps.setInt(1, ev.getFk_lugar());
+            ps.execute();
+            System.out.println("Exito al actualizar el lugar");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexion.close(ps);
+            Conexion.close(conn);
+        }
+    }
 
     public void delete(Eventos ev) {
         Connection conn = null;

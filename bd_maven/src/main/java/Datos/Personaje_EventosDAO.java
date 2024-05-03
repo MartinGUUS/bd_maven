@@ -56,7 +56,7 @@ public class Personaje_EventosDAO {
             ps.setInt(1, peev.getFk_personaje());
             ps.setInt(2, peev.getFk_evento());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Exito al insertar Personajes_Eventos");
+            System.out.println("Ingreso exitoso");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
@@ -65,17 +65,17 @@ public class Personaje_EventosDAO {
         }
     }
 
-    public void update(Personaje_Eventos peev) {
+    public void update(int nuevopersonaje, int viejopersonaje, int evento) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexion.getConnection();
             ps = conn.prepareStatement(updatePrincipal);
-            ps.setInt(1, peev.getFk_personaje());
-            ps.setInt(2, peev.getFk_personaje());
-            ps.setInt(3, peev.getFk_evento());
+            ps.setInt(1, nuevopersonaje);
+            ps.setInt(2, viejopersonaje);
+            ps.setInt(3, evento);
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Exito al actualizar Personajes_Eventos");
+            System.out.println("Exito al actualizar");
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {

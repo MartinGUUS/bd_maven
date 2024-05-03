@@ -23,6 +23,14 @@ public class Eventos implements Serializable {
         this.fk_lugar = fk_lugar;
     }
 
+    public Eventos(String nombre, String descripcion, Date fecha, int fk_lugar) {
+
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+        this.fk_lugar = fk_lugar;
+    }
+
     public int getIdEvento() {
         return idEvento;
     }

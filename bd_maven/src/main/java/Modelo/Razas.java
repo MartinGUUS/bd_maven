@@ -2,7 +2,7 @@ package Modelo;
 
 import java.io.Serializable;
 
-public class Razas implements Serializable{
+public class Razas implements Serializable {
 
     private int idRaza;
     private String nombre;
@@ -15,6 +15,12 @@ public class Razas implements Serializable{
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
+
+    public Razas(int idRaza, String nombre) {
+        this.idRaza = idRaza;
+        this.nombre = nombre;
+    }
+
 
     public Razas(int idRaza, String nombre, String descripcion) {
         this.idRaza = idRaza;
@@ -45,7 +51,6 @@ public class Razas implements Serializable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
 
 
 }

@@ -1,4 +1,4 @@
--- Active: 1712587474957@@127.0.0.1@5432@db_maven
+-- Active: 1714705985122@@127.0.0.1@5432@db_maven
 
 CREATE TABLE Lugares (
 	idLugar SERIAL ,
